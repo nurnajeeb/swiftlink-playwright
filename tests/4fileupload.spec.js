@@ -9,9 +9,9 @@ test("valid login and file upload", async function ({ page }) {
 
     // Perform login steps
     await page.waitForSelector('input[placeholder="enter your email"]');
-    await page.locator('input[placeholder="enter your email"]').fill('sulaiman.ghori@outlook.com');
+    await page.locator('input[placeholder="enter your email"]').fill('noor.najeeb@enterprise64.com');
     await page.waitForSelector('input[placeholder="enter your password"]');
-    await page.locator('input[placeholder="enter your password"]').fill('EMsGtMrd2XaGHa');
+    await page.locator('input[placeholder="enter your password"]').fill('Admin$11');
 
     await page.locator('text="Log in"').click();
 
@@ -19,7 +19,7 @@ test("valid login and file upload", async function ({ page }) {
     await page.waitForLoadState('domcontentloaded');
 
     console.log("Clicking on 'Upload file' element");
-    await page.click('text="Upload file"', { timeout: 300000 });
+    await page.click('text="Upload file"', { timeout: 30000 });
 
     console.log("Waiting for the page to be in the 'domcontentloaded' state");
     await page.waitForLoadState('domcontentloaded');
@@ -30,13 +30,13 @@ test("valid login and file upload", async function ({ page }) {
         "C:\\Users\\NoorNajeeb\\Downloads\\EXCITED To Join  (1) (1).mp4"
     ];
 
-    // console.log("Setting multiple input files");
-    // await page.setInputFiles('input[type="file"]', filesToUpload);
+    console.log("Setting multiple input files");
+    await page.setInputFiles('input[type="file"]', filesToUpload);
 
-    // Wait for a toast message indicating a successful upload
-   // await page.waitForSelector(".toast-success", { timeout: 30000 });
+    // // Wait for a toast message indicating a successful upload
+    // await page.waitForSelector(".toast-success", { timeout: 3000000 });
 
-    // Get the text content of the success message element
+    // // Get the text content of the success message element
     // let toastMessages = [];
     // for (const file of filesToUpload) {
     //     toastMessages.push(await page.$eval(".toast-success", (element) => element.textContent));
@@ -48,5 +48,5 @@ test("valid login and file upload", async function ({ page }) {
     //     }
     // }
 
-   // console.log("Test passed!");
+    // console.log("Test passed!");
 });

@@ -5,10 +5,9 @@ test("valid login", async function ({ page }) {
   await page.goto("https://swiftink-angular-git-qa-swiftink.vercel.app/login");
 
   await page.waitForSelector('input[placeholder="enter your email"]');
-  await page.locator('input[placeholder="enter your email"]').fill('sulaiman.ghori@outlook.com');
-
+  await page.locator('input[placeholder="enter your email"]').fill('noor.najeeb@enterprise64.com');
   await page.waitForSelector('input[placeholder="enter your password"]');
-  await page.locator('input[placeholder="enter your password"]').fill('EMsGtMrd2XaGHa');
+  await page.locator('input[placeholder="enter your password"]').fill('Admin$11');
 
   // Capture the URL before clicking login
   const initialUrl = page.url();
