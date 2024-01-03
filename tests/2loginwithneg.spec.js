@@ -21,12 +21,12 @@ test("valid login", async function ({ page }) {
   console.log("Initial URL:", initialUrl);
   console.log("Current URL:", url);
 
-  expect(url).toBe("https://swiftink-angular-git-qa-swiftink.vercel.app/dashboard/transcripts");
+  expect(url).toBe("https://swiftink-angular-git-staging-swiftink.vercel.app/dashboard/transcripts");
 });
 
 // Negative Test: Invalid Login
 test("invalid login", async function ({ page }) {
-  await page.goto("https://swiftink-angular-git-qa-swiftink.vercel.app/login");
+  await page.goto("https://swiftink-angular-git-staging-swiftink.vercel.app/login");
 
   await page.waitForSelector('input[placeholder="enter your email"]');
   await page.locator('input[placeholder="enter your email"]').fill('invalid.email@example.com'); // Provide an invalid email
@@ -58,13 +58,13 @@ test("invalid login", async function ({ page }) {
   console.log("Current URL:", url);
 
   // For negative testing, you might expect a different URL or some error message on the login page
-  expect(url).not.toBe("https://swiftink-angular-git-qa-swiftink.vercel.app/dashboard/transcripts");
+  expect(url).not.toBe("https://swiftink-angular-git-staging-swiftink.vercel.app/dashboard/transcripts");
   // You can customize this expectation based on your application's behavior for invalid logins
 });
 
 // Negative Test: Invalid Email Format
 test("invalid email format", async function ({ page }) {
-  await page.goto("https://swiftink-angular-git-qa-swiftink.vercel.app/login");
+  await page.goto("https://swiftink-angular-git-staging-swiftink.vercel.app/login");
 
   // Provide an invalid email format
   await page.waitForSelector('input[placeholder="enter your email"]');
@@ -98,13 +98,13 @@ test("invalid email format", async function ({ page }) {
   console.log("Current URL:", url);
 
   // For negative testing, you might expect a different URL or some error message on the login page
-  expect(url).not.toBe("https://swiftink-angular-git-qa-swiftink.vercel.app/dashboard/transcripts");
+  expect(url).not.toBe("https://swiftink-angular-git-staging-swiftink.vercel.app/dashboard/transcripts");
   // You can customize this expectation based on your application's behavior for invalid email format
 });
 
 // Negative Test: Empty Email and Password
 test("empty email and password", async function ({ page }) {
-  await page.goto("https://swiftink-angular-git-qa-swiftink.vercel.app/login");
+  await page.goto("https://swiftink-angular-git-staging-swiftink.vercel.app/login");
 
   // Provide an empty email and password
   await page.waitForSelector('input[placeholder="enter your email"]');
@@ -137,7 +137,7 @@ test("empty email and password", async function ({ page }) {
   console.log("Current URL:", url);
 
   // For negative testing, you might expect a different URL or some error message on the login page
-  expect(url).not.toBe("https://swiftink-angular-git-qa-swiftink.vercel.app/dashboard/transcripts");
+  expect(url).not.toBe("https://swiftink-angular-git-staging-swiftink.vercel.app/dashboard/transcripts");
   // You can customize this expectation based on your application's behavior for empty email and password
 });
 

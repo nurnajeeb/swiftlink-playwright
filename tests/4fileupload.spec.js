@@ -33,6 +33,9 @@ test("valid login and file upload", async function ({ page }) {
     console.log("Setting multiple input files");
     await page.setInputFiles('input[type="file"]', filesToUpload);
 
+
+  
+
     // // Wait for a toast message indicating a successful upload
     // await page.waitForSelector(".toast-success", { timeout: 3000000 });
 

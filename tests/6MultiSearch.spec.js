@@ -2,7 +2,7 @@ const { test, expect } = require("playwright/test");
 
 test("valid login and search", async function ({ page }) {
   // Login
-  await page.goto("https://swiftink-angular-git-qa-swiftink.vercel.app/login");
+  await page.goto("https://swiftink-angular-git-staging-swiftink.vercel.app/login");
 
   await page.waitForSelector('input[placeholder="enter your email"]');
   await page.locator('input[placeholder="enter your email"]').fill('sulaiman.ghori@outlook.com');

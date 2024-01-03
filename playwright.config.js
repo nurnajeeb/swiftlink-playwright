@@ -58,7 +58,7 @@
 //     {
 //       name: 'e2e_tests',
 //        testDir: './tests',
-//        testMatch: /.*(1login|2loginwithneg|3Loginthenlogout|4fileupload|5multiplefileupload|6Multisearch|7Multiselect)\.spec\.js/,
+//        testMatch: /.*(0CreateAccount|1login|2loginwithneg|3Loginthenlogout|4fileupload|5multiplefileupload|6Multisearch|7Multiselect|8MultoselectDelete|9Displayview)\.spec\.js/,
 //     },
  
 //     /* Test against mobile viewports. */

@@ -1,7 +1,7 @@
 const { test, expect } = require("playwright/test");
 
 test("valid loginthenlogout", async function ({ page }) {
-  await page.goto("https://swiftink-angular-git-qa-swiftink.vercel.app/login");
+  await page.goto("https://swiftink-angular-git-staging-swiftink.vercel.app/login");
 
   await page.waitForSelector('input[placeholder="enter your email"]');
   await page.locator('input[placeholder="enter your email"]').fill('noor.najeeb@enterprise64.com');
@@ -20,7 +20,7 @@ test("valid loginthenlogout", async function ({ page }) {
   console.log("Initial URL:", initialUrl);
   console.log("Current URL before logout:", urlBeforeLogout);
 
-  expect(urlBeforeLogout).toBe("https://swiftink-angular-git-qa-swiftink.vercel.app/dashboard/transcripts");
+  expect(urlBeforeLogout).toBe("https://swiftink-angular-git-staging-swiftink.vercel.app/dashboard/transcripts");
 
   // Corrected selector and waiting strategy
   await page.waitForSelector('.group.hover\\:cursor-pointer');
@@ -31,9 +31,10 @@ test("valid loginthenlogout", async function ({ page }) {
     page.waitForResponse(response => response.url().includes('logout')), // Adjust the URL pattern accordingly
     page.locator('text=Log out').click(),
   ]);
-
+  //await page.locator('svg').first().click();
+  //await page.getByText('Log out').click();
   // Define textAfterLogout before using it
   const textAfterLogout = await page.url();
   console.log("Text content after logout:", textAfterLogout);
-  expect(textAfterLogout).toBe("https://swiftink-angular-git-qa-swiftink.vercel.app/login");
+  expect(textAfterLogout).toBe("https://swiftink-angular-git-staging-swiftink.vercel.app/login");
 });
