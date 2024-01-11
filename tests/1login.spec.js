@@ -37,12 +37,18 @@
 // })
 
 // Import the class without curly braces since it's the default export
- import { test, expect } from 'playwright/test';
- import LoginPages, { validCredentials, invalidCredentials, emptyCredentials } from '../Pages/LoginPages';
+import { test } from 'playwright/test';
+import LoginPages, { validCredentials } from '../Pages/LoginPages';
 
 test('test', async ({ page }) => {
   const login = new LoginPages(page);
   await login.gotoLoginPage();
   await login.login(validCredentials.username, validCredentials.password);
- });
+  
+  // You may not need this timeout, but it depends on your application behavior
+  await page.waitForTimeout(5000);
+
+  // Call the validateSuccessfulLogin method separately
+  await login.validateSuccessfulLogin();
+});
 

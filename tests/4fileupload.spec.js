@@ -1,19 +1,33 @@
-const { test, expect } = require("playwright/test");
+import { test } from 'playwright/test';
+import LoginPages, { validCredentials } from '../Pages/LoginPages';
 
-test("valid login and file upload", async function ({ page }) {
-    console.log("Navigating to the login page");
-    await page.goto("https://swiftink-angular-git-staging-swiftink.vercel.app/login");
+test('test', async ({ page }) => {
+  const login = new LoginPages(page);
+  await login.gotoLoginPage();
+  await login.login(validCredentials.username, validCredentials.password);
+  
+  // You may not need this timeout, but it depends on your application behavior
+  await page.waitForTimeout(5000);
 
-    // Wait for the login page to load
-    await page.waitForLoadState('domcontentloaded');
+  // Call the validateSuccessfulLogin method separately
+  await login.validateSuccessfulLogin(); 
+  
+// const { test, expect } = require("playwright/test");
 
-    // Perform login steps
-    await page.waitForSelector('input[placeholder="enter your email"]');
-    await page.locator('input[placeholder="enter your email"]').fill('noor.najeeb@enterprise64.com');
-    await page.waitForSelector('input[placeholder="enter your password"]');
-    await page.locator('input[placeholder="enter your password"]').fill('Admin$11');
+// test("valid login and file upload", async function ({ page }) {
+//     console.log("Navigating to the login page");
+//     await page.goto("https://swiftink-angular-git-staging-swiftink.vercel.app/login");
 
-    await page.locator('text="Log in"').click();
+//     // Wait for the login page to load
+//     await page.waitForLoadState('domcontentloaded');
+
+//     // Perform login steps
+//     await page.waitForSelector('input[placeholder="enter your email"]');
+//     await page.locator('input[placeholder="enter your email"]').fill('noor.najeeb@enterprise64.com');
+//     await page.waitForSelector('input[placeholder="enter your password"]');
+//     await page.locator('input[placeholder="enter your password"]').fill('Admin$11');
+
+//     await page.locator('text="Log in"').click();
 
     // Wait for the page to load after login
     await page.waitForLoadState('domcontentloaded');

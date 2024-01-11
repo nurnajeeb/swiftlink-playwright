@@ -1,16 +1,30 @@
-const { test, expect } = require("playwright/test");
 
-test("valid login and search", async function ({ page }) {
-  // Login
-  await page.goto("https://swiftink-angular-git-staging-swiftink.vercel.app/login");
+import { test } from 'playwright/test';
+import LoginPages, { validCredentials } from '../Pages/LoginPages';
 
-  await page.waitForSelector('input[placeholder="enter your email"]');
-  await page.locator('input[placeholder="enter your email"]').fill('sulaiman.ghori@outlook.com');
+test('test', async ({ page }) => {
+  const login = new LoginPages(page);
+  await login.gotoLoginPage();
+  await login.login(validCredentials.username, validCredentials.password);
+  
+  // You may not need this timeout, but it depends on your application behavior
+  await page.waitForTimeout(5000);
 
-  await page.waitForSelector('input[placeholder="enter your password"]');
-  await page.locator('input[placeholder="enter your password"]').fill('EMsGtMrd2XaGHa');
-  const initialUrl = page.url();
-  await page.locator('text=Log in').click();
+  // Call the validateSuccessfulLogin method separately
+  await login.validateSuccessfulLogin();
+  // const { test, expect } = require("playwright/test");
+
+// test("valid login and search", async function ({ page }) {
+//   // Login
+//   await page.goto("https://swiftink-angular-git-staging-swiftink.vercel.app/login");
+
+//   await page.waitForSelector('input[placeholder="enter your email"]');
+//   await page.locator('input[placeholder="enter your email"]').fill('sulaiman.ghori@outlook.com');
+
+//   await page.waitForSelector('input[placeholder="enter your password"]');
+//   await page.locator('input[placeholder="enter your password"]').fill('EMsGtMrd2XaGHa');
+//   const initialUrl = page.url();
+//   await page.locator('text=Log in').click();
   await page.waitForTimeout(5000);
   // Wait for the page to load after login
   await page.waitForLoadState('domcontentloaded');
